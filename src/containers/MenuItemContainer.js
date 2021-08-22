@@ -3,10 +3,13 @@ import { removeItem, updatePriceItem, updateQuantityItem } from "../store/items/
 import {MenuItem} from '../components/MenuItem';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { selectTotalPriceItem } from "../store/selectors";
 
-const mapStateToProps = (_, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
+    const total = selectTotalPriceItem(state, ownProps)
     return {
-        total: ownProps.price * ownProps.quantity
+        // total: ownProps.price * ownProps.quantity,
+        total
     }
 }
 
